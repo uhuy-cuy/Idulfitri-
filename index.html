@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bpk Supriyanto & Ibu Dwi Rustina</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amiri&family=Pacifico&family=Quicksand&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(to top, #fefbe9, #dbe6ea);
+        font-family: "Quicksand", sans-serif;
+        overflow: hidden;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+
+      .card {
+        background: url("https://www.transparenttextures.com/patterns/purty-wood.png"),
+          rgba(255, 255, 255, 0.96);
+        background-blend-mode: overlay;
+        border-radius: 30px;
+        padding: 50px 40px;
+        box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        max-width: 700px;
+        position: relative;
+        z-index: 10;
+      }
+
+      h1 {
+        font-family: "Amiri", serif;
+        font-size: 2.8em;
+        color: #117864;
+        margin-bottom: 20px;
+      }
+
+      .typing {
+        display: inline-block;
+        font-size: 1.25em;
+        border-right: 2px solid #117864;
+        white-space: pre-wrap;
+        overflow: hidden;
+        animation: blink 0.8s infinite;
+        min-height: 100px;
+      }
+
+      @keyframes blink {
+        50% {
+          border-color: transparent;
+        }
+      }
+
+      .ornament {
+        font-size: 2em;
+        margin: 15px 0;
+        animation: pulse 2.5s infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.1);
+        }
+      }
+
+      .signature {
+        margin-top: 30px;
+        font-style: italic;
+        color: #666;
+      }
+
+      .stars {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+        z-index: 1;
+      }
+
+      .star {
+        position: absolute;
+        width: 6px;
+        height: 6px;
+        background: #f1c40f;
+        border-radius: 50%;
+        opacity: 0.8;
+        filter: blur(1px);
+        animation: fall linear infinite;
+      }
+
+      @keyframes fall {
+        0% {
+          transform: translateY(-10px);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh);
+          opacity: 0;
+        }
+      }
+
+      .lantern {
+        position: absolute;
+        width: 40px;
+        top: -60px;
+        animation: swing 5s ease-in-out infinite;
+      }
+
+      @keyframes swing {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        50% {
+          transform: rotate(10deg);
+        }
+      }
+
+      .lantern.left {
+        left: 20px;
+      }
+
+      .lantern.right {
+        right: 20px;
+      }
+    </style>
+    <link
+      rel="icon"
+      href="https://em-content.zobj.net/source/microsoft-teams/337/crescent-moon_1f319.png"
+      type="image/png"
+    />
+  </head>
+  <body>
+    <div class="stars" id="stars-container"></div>
+    <img src="https://i.ibb.co/ZmvQ4Rm/lantern.png" class="lantern left" />
+    <img src="https://i.ibb.co/ZmvQ4Rm/lantern.png" class="lantern right" />
+
+    <div class="card">
+      <div class="ornament">🕌🌙✨</div>
+      <h1>Selamat Hari Raya Idul Fitri 1446 H</h1>
+      <div class="typing" id="typing-text"></div>
+      <div class="ornament">🌟💛🕋💚</div>
+      <p class="signature">
+        - Kami Sekeluarga Bpk Supriyanto dan Ibu Dwi Rustina -
+      </p>
+      <p class="signature">Create by <strong>@tahirwiyan</strong> 🧡</p>
+    </div>
+
+    <script>
+      const text = `Taqabbalallahu minna wa minkum 🌙
+    Semoga Allah menerima amal ibadah kita,
+    memberi keberkahan dan mengampuni dosa-dosa kita.
+    Mohon Maaf Lahir dan Batin 🙏💖`;
+
+      const typingText = document.getElementById("typing-text");
+      let i = 0;
+      const speed = 50;
+
+      function typeWriter() {
+        if (i < text.length) {
+          const char = text.charAt(i);
+          typingText.innerHTML += char === "\n" ? "<br>" : char;
+          i++;
+          setTimeout(typeWriter, speed);
+        }
+      }
+
+      typeWriter();
+
+      // Bintang jatuh animasi
+      const starContainer = document.getElementById("stars-container");
+      for (let i = 0; i < 60; i++) {
+        const star = document.createElement("div");
+        star.classList.add("star");
+        star.style.left = Math.random() * 100 + "vw";
+        star.style.top = Math.random() * -100 + "px";
+        star.style.animationDuration = Math.random() * 4 + 3 + "s";
+        star.style.animationDelay = Math.random() * 5 + "s";
+        starContainer.appendChild(star);
+      }
+    </script>
+  </body>
+</html>
